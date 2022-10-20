@@ -32,7 +32,7 @@ const LeftSidebar = () => {
                     className="item"
                     key={id}
                     id="typeBorder"
-                    style={{boxshadow:"none"}}
+                    style={{ boxshadow: "none" }}
                   >
                     <span> {element.id}. </span>
                     {element.name}
@@ -67,7 +67,7 @@ const Wrapper = styled.div`
     overflow-y: scroll;
     width: 100%;
     font-family: "Kumbh Sans", sans-serif;
-    border-right: 0.3px solid #dedede;
+    /* border-right: 0.3px solid #dedede; */
   }
 
   .title {
@@ -76,13 +76,22 @@ const Wrapper = styled.div`
     transition: all 0.3s linear;
     /* margin: 15px; */
   }
-  #panel1a-header {
+
+  .MuiAccordionSummary-content {
     border: none !important;
-    box-shadow: none !important; 
+    box-shadow: none !important;
   }
-  #typeBorder {
-    border: none;
-    box-shadow: none;
+  .css-1elwnq4-MuiPaper-root-MuiAccordion-root {
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+  .css-1elwnq4-MuiPaper-root-MuiAccordion-root:before {
+    position: absolute !important;
+    top: -1px !important;
+    border: none !important;
+    box-shadow: none !important;
+    visibility: hidden;
   }
 
   .item {
@@ -92,9 +101,9 @@ const Wrapper = styled.div`
     font-size: 14px;
   }
 
-.MuiAccordionDetails-root {
-  height: 5px solid red !important;
-}
+  .MuiAccordionDetails-root {
+    height: 5px solid red !important;
+  }
 
   .title,
   item {

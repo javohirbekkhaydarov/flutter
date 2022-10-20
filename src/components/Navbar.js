@@ -4,6 +4,7 @@ import { BsGithub } from "react-icons/bs";
 import { BsYoutube } from "react-icons/bs";
 import { BsTwitter } from "react-icons/bs";
 import { AiOutlineCaretDown } from "react-icons/ai";
+import { FaBars } from "react-icons/fa";
 import styled from "styled-components";
 import "../styles/Main.css";
 const Navbar = () => {
