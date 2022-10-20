@@ -17,13 +17,13 @@ const Navbar = () => {
 
   return (
     <Wrapper>
-      <div class="navbar">
+      <div className="navbar">
         <div id="nav">
-          <a href="index.html" class="logo">
+          <a href="index.html" className="logo">
             <img src="https://docs.flutter.dev/assets/images/shared/brand/flutter/logo/flutter-lockup.png" />
           </a>
 
-          <div class="links">
+          <div className="links">
             <ul className="links-ul">
               <li onClick={() => setValue({ all: true })} className="li-rel">
                 <span className="links-title">
@@ -131,7 +131,7 @@ const Navbar = () => {
             </ul>
             <div className="search-box search-icon ">
               <input
-                class="search-input"
+                className="search-input"
                 type="text"
                 name=""
                 placeholder="Search"
@@ -139,13 +139,13 @@ const Navbar = () => {
               <div
                 href="#"
                 onClick={() => SetSearch(true)}
-                class={` ${search.true ? "IconVisible" : null}`}
+                className={` ${search.true ? "IconVisible" : null}`}
               >
                 <BsSearch className="fa-search" />
               </div>
             </div>
 
-            <div class="navbar-icons">
+            <div className="navbar-icons">
               <div className="github-icon">
                 <BsGithub />
               </div>
@@ -155,7 +155,7 @@ const Navbar = () => {
               <div className="twit-icon">
                 <BsTwitter />
               </div>
-              <button class="btn">get started</button>
+              <button className="btn">get started</button>
             </div>
           </div>
         </div>
@@ -192,14 +192,22 @@ const Wrapper = styled.div`
   .modal-back-show {
     display: block;
   }
-
+  .navbar {
+    position: relative;
+  }
   #nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
     display: flex;
     justify-content: space-between;
     box-shadow: 1px 1px 10px #d1cfcf;
     margin: 0;
     padding: 10px;
     height: 60px;
+    background-color: #fff;
+    z-index: 22;
   }
   .navbar-icons {
     color: #898c8e;
@@ -338,7 +346,7 @@ const Wrapper = styled.div`
 
   .fa-search {
     color: #757070;
-      cursor: pointer;
+    cursor: pointer;
     font-size: 20px;
     margin: 0 2rem;
   }
@@ -385,6 +393,7 @@ const Wrapper = styled.div`
     display: flex;
 
     text-align: center;
+    margin-top: 60px;
   }
   .navbar-bottom-text {
     padding: 4rem auto;
@@ -401,12 +410,18 @@ const Wrapper = styled.div`
   }
 
   @media screen and (max-width: 768px) {
-    .links {
+    .links-ul {
       display: none;
       flex-direction: column;
     }
     .navbar-icons {
-      width: 20%;
+      width: 100%;
+    }
+    .navbar-icons div {
+      margin: 0px 10px;
+    }
+    .fa-search {
+      display: none;
     }
     .navbar-icons .btn {
       display: none;
