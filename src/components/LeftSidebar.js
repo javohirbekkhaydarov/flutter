@@ -23,14 +23,17 @@ const LeftSidebar = () => {
               expandIcon={<ExpandMoreIcon />}
               key={id}
             >
-              <Typography className="title" >
-                {item.name}
-              </Typography>
+              <Typography className="title">{item.name}</Typography>
             </AccordionSummary>
             {item.children.map((element, id) => {
               return (
-                <AccordionDetails typeof="number">
-                  <Typography className="item" key={id}>
+                <AccordionDetails typeof="number" id="typeBorder">
+                  <Typography
+                    className="item"
+                    key={id}
+                    id="typeBorder"
+                    style={{boxshadow:"none"}}
+                  >
                     <span> {element.id}. </span>
                     {element.name}
                   </Typography>
@@ -64,6 +67,7 @@ const Wrapper = styled.div`
     overflow-y: scroll;
     width: 100%;
     font-family: "Kumbh Sans", sans-serif;
+    border-right: 0.3px solid #dedede;
   }
 
   .title {
@@ -72,6 +76,14 @@ const Wrapper = styled.div`
     transition: all 0.3s linear;
     /* margin: 15px; */
   }
+  #panel1a-header {
+    border: none !important;
+    box-shadow: none !important; 
+  }
+  #typeBorder {
+    border: none;
+    box-shadow: none;
+  }
 
   .item {
     transition: all 0.3s linear;
@@ -79,6 +91,11 @@ const Wrapper = styled.div`
 
     font-size: 14px;
   }
+
+.MuiAccordionDetails-root {
+  height: 5px solid red !important;
+}
+
   .title,
   item {
     color: #909090;
