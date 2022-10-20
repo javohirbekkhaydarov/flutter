@@ -13,17 +13,15 @@ const Navbar = () => {
     ecosystem: false,
     docs: false,
   });
+  const [search, SetSearch] = useState(false);
 
   return (
     <Wrapper>
       <div class="navbar">
         <div id="nav">
-          <div class="logo">
-            <img
-              src="https://docs.flutter.dev/assets/images/shared/brand/flutter/logo/flutter-lockup.png"
-              alt=""
-            />
-          </div>
+          <a href="index.html" class="logo">
+            <img src="https://docs.flutter.dev/assets/images/shared/brand/flutter/logo/flutter-lockup.png" />
+          </a>
 
           <div class="links">
             <ul className="links-ul">
@@ -131,22 +129,34 @@ const Navbar = () => {
                 }`}
               ></div>
             </ul>
-          </div>
+            <div className="search-box search-icon ">
+              <input
+                class="search-input"
+                type="text"
+                name=""
+                placeholder="Search"
+              />
+              <div
+                href="#"
+                onClick={() => SetSearch(true)}
+                class={` ${search.true ? "IconVisible" : null}`}
+              >
+                <BsSearch className="fa-search" />
+              </div>
+            </div>
 
-          <div class="navbar-icons">
-            <div className="search-icon">
-              <BsSearch />
+            <div class="navbar-icons">
+              <div className="github-icon">
+                <BsGithub />
+              </div>
+              <div className="youtube-icon">
+                <BsYoutube />
+              </div>
+              <div className="twit-icon">
+                <BsTwitter />
+              </div>
+              <button class="btn">get started</button>
             </div>
-            <div className="github-icon">
-              <BsGithub />
-            </div>
-            <div className="youtube-icon">
-              <BsYoutube />
-            </div>
-            <div className="twit-icon">
-              <BsTwitter />
-            </div>
-            <button class="btn">get started</button>
           </div>
         </div>
         <div className="navbar-bottom">
@@ -195,7 +205,7 @@ const Wrapper = styled.div`
     color: #898c8e;
     display: flex;
     justify-content: space-around;
-    width: 20%;
+    width: 100%;
     align-items: center;
     font-size: 22px;
   }
@@ -287,6 +297,9 @@ const Wrapper = styled.div`
   .links-icon {
     margin-left: 20px;
   }
+  .navbar-icons {
+    width: 100%;
+  }
   .navbar-icons div:hover {
     cursor: pointer;
     color: #111;
@@ -302,6 +315,56 @@ const Wrapper = styled.div`
   .btn:hover {
     background-color: #085baf;
     cursor: pointer;
+  }
+
+  /*  search btn */
+  .search-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .search-btn {
+    color: white;
+    float: right;
+
+    /* border-radius: 50%; */
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: 2s;
+    padding-bottom: 8px;
+  }
+
+  .fa-search {
+    color: #757070;
+      cursor: pointer;
+    font-size: 20px;
+    margin: 0 2rem;
+  }
+
+  .search-input {
+    border: 1px solid #4286f4;
+    background: none;
+    outline: none;
+    float: left;
+    padding: 2px;
+    color: #757070;
+    font-size: 20px;
+    transition: 0.4s;
+    border-radius: 2px;
+    width: 0px;
+    visibility: hidden;
+  }
+
+  .search-icon:hover .search-input {
+    width: 250px;
+    visibility: visible;
+  }
+  .IconVisible {
+    height: 40px;
+    width: 100px;
+    background-color: #0176e8;
   }
 
   /* Navbar bottom text */
@@ -335,6 +398,19 @@ const Wrapper = styled.div`
   }
   .navbar-bottom-text a:hover {
     text-decoration: underline;
+  }
+
+  @media screen and (max-width: 768px) {
+    .links {
+      display: none;
+      flex-direction: column;
+    }
+    .navbar-icons {
+      width: 20%;
+    }
+    .navbar-icons .btn {
+      display: none;
+    }
   }
 `;
 
