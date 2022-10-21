@@ -8,16 +8,15 @@ const RightSidebar = () => {
     <Wrapper>
       <div className="rightSidebar">
         <p className="right-title">Contents</p>
-
-        {value.map((item, index) => {
-          return (
-            <ul>
-              <li>
+        <ul>
+          {value.map((item, index) => {
+            return (
+              <li key={index}>
                 <a href="#">{item.title}</a>
               </li>
-            </ul>
-          );
-        })}
+            );
+          })}
+        </ul>
       </div>
     </Wrapper>
   );
@@ -54,10 +53,26 @@ const Wrapper = styled.div`
     text-decoration: none;
     width: 100%;
   }
+  ul li {
+    list-style: none;
+  }
 
   ul li a:hover {
     text-decoration: underline;
     color: #5b86e1;
+  }
+  @media screen and (max-width: 768px) {
+    width: 100%;
+    overflow: hidden;
+    height: 100%;
+    .rightSidebar {
+      width: 90%;
+      overflow: hidden;
+      height: 100%;
+    }
+    ::-webkit-scrollbar {
+      width: 0px;
+    }
   }
 `;
 

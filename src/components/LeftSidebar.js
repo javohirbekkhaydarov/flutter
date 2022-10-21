@@ -7,7 +7,7 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-
+import SearchSection from "./SearchSection";
 const LeftSidebar = () => {
   const [arr, SetArr] = useState(data);
   //   dropdown
@@ -15,33 +15,38 @@ const LeftSidebar = () => {
   return (
     <Wrapper>
       <div className="leftSidebar">
-        {arr.map((item, id) => (
-          <Accordion className="faq-name ">
-            <AccordionSummary
-              aria-controls="panel1a-content"
-              id="panel1a-header"
-              expandIcon={<ExpandMoreIcon />}
-              key={id}
-            >
-              <Typography className="title">{item.name}</Typography>
-            </AccordionSummary>
-            {item.children.map((element, id) => {
-              return (
-                <AccordionDetails typeof="number" id="typeBorder">
-                  <Typography
-                    className="item"
-                    key={id}
-                    id="typeBorder"
-                    style={{ boxshadow: "none" }}
-                  >
-                    <span> {element.id}. </span>
-                    {element.name}
-                  </Typography>
-                </AccordionDetails>
-              );
-            })}
-          </Accordion>
-        ))}
+        <div className="search-parent">
+          <SearchSection />
+        </div>
+        <hr />
+
+        <div className="rest-info">
+          {arr.map((item, id) => (
+            <Accordion className="faq-name " key={id}>
+              <AccordionSummary
+                aria-controls="panel1a-content"
+                id="panel1a-header"
+                expandIcon={<ExpandMoreIcon />}
+              >
+                <Typography className="title">{item.name}</Typography>
+              </AccordionSummary>
+              {item.children.map((element, id) => {
+                return (
+                  <AccordionDetails typeof="number" id="typeBorder" key={id}>
+                    <Typography
+                      className="item"
+                      id="typeBorder"
+                      style={{ boxshadow: "none" }}
+                    >
+                      <span> {element.id}. </span>
+                      {element.name}
+                    </Typography>
+                  </AccordionDetails>
+                );
+              })}
+            </Accordion>
+          ))}
+        </div>
       </div>
     </Wrapper>
   );
@@ -53,8 +58,8 @@ const Wrapper = styled.div`
   * {
     font-family: "Kumbh Sans", sans-serif;
   }
-
-  width: 20%;
+  display: flex;
+  width: 100%;
   .leftSidebar {
     position: sticky;
     top: 80px;
@@ -63,11 +68,18 @@ const Wrapper = styled.div`
     flex-direction: column;
     text-align: left;
     margin: 20px;
-    height: 70vh;
+    height: 80vh;
     overflow-y: scroll;
     width: 100%;
     font-family: "Kumbh Sans", sans-serif;
-    /* border-right: 0.3px solid #dedede; */
+  }
+  .logo {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+  }
+  .logo img {
+    width: 80px;
   }
 
   .title {
@@ -119,6 +131,35 @@ const Wrapper = styled.div`
   .title:hover {
     color: #1c1c1c;
     cursor: pointer;
+  }
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    flex-direction: column;
+    overflow: hidden;
+    height: 100vh;
+    text-align: left;
+    /* z-index: 300; */
+    background: #fff;
+    .leftSidebar {
+      position: relative;
+      top: 10px;
+      left: 0px;
+      width: 90%;
+      overflow-y: hidden;
+    }
+
+    .rest-info {
+      height: 100vh;
+      width: 100%;
+      overflow-y: scroll;
+      z-index: 600;
+    }
+    .search-parent {
+      border-bottom: 0.3px solid #dedede;
+    }
   }
 `;
 

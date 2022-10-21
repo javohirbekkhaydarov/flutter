@@ -5,14 +5,17 @@ import { BsYoutube } from "react-icons/bs";
 import { BsTwitter } from "react-icons/bs";
 import { AiOutlineCaretDown } from "react-icons/ai";
 import { FaBars } from "react-icons/fa";
+import { HiBars3 } from "react-icons/hi2";
 import styled from "styled-components";
 import "../styles/Main.css";
-const Navbar = () => {
+
+const Navbar = ({ setStatus, status }) => {
   const [value, setValue] = useState({
     all: false,
     development: false,
     ecosystem: false,
     docs: false,
+    search: false,
   });
   const [search, SetSearch] = useState(false);
 
@@ -20,7 +23,10 @@ const Navbar = () => {
     <Wrapper>
       <div className="navbar">
         <div id="nav">
-          <a href="index.html" className="logo">
+          <a href="#" className="logo">
+            <div className="sidebar-icon">
+              <FaBars onClick={() => setStatus(true)} className="FaBars" />
+            </div>
             <img src="https://docs.flutter.dev/assets/images/shared/brand/flutter/logo/flutter-lockup.png" />
           </a>
 
@@ -34,9 +40,9 @@ const Navbar = () => {
                   </span>
                 </span>
                 <div className={`li-absolute ${value.all ? "li-show" : null}`}>
-                  <a href="#">hey you</a>
-                  <a href="#">hey you</a>
-                  <a href="#">hey you</a>
+                  <a href="#">temp data</a>
+                  <a href="#">temp data</a>
+                  <a href="#">temp data</a>
                 </div>
               </li>
 
@@ -62,9 +68,9 @@ const Navbar = () => {
                     value.development ? "li-show" : null
                   }`}
                 >
-                  <a href="#">hey you</a>
-                  <a href="#">hey you</a>
-                  <a href="#">hey you</a>
+                  <a href="#">temp data</a>
+                  <a href="#">temp data</a>
+                  <a href="#">temp data</a>
                 </div>
               </li>
               <div
@@ -91,9 +97,9 @@ const Navbar = () => {
                     value.ecosystem ? "li-show" : null
                   }`}
                 >
-                  <a href="#">hey you</a>
-                  <a href="#">hey you</a>
-                  <a href="#">hey you</a>
+                  <a href="#">temp data</a>
+                  <a href="#">temp data</a>
+                  <a href="#">temp data</a>
                 </div>
               </li>
               <div
@@ -118,9 +124,9 @@ const Navbar = () => {
                   </span>
                 </span>
                 <div className={`li-absolute ${value.docs ? "li-show" : null}`}>
-                  <a href="#">hey you</a>
-                  <a href="#">hey you</a>
-                  <a href="#">hey you</a>
+                  <a href="#">temp data</a>
+                  <a href="#">temp data</a>
+                  <a href="#">temp data</a>
                 </div>
               </li>
               <div
@@ -131,19 +137,31 @@ const Navbar = () => {
               ></div>
             </ul>
             <div className="search-box search-icon ">
-              <input
-                className="search-input"
-                type="text"
-                name=""
-                placeholder="Search"
-              />
+              <li onClick={() => setValue({ search: true })} className="li-rel">
+                <span className="links-title">
+                  <span className="links-icon">
+                    <BsSearch className="fa-search" />
+                  </span>
+                </span>
+                <div
+                  className={`search-width ${
+                    value.search ? "search-width-show" : null
+                  }`}
+                >
+                  <input
+                    className="search-input"
+                    type="text"
+                    name=""
+                    placeholder="Search"
+                  />
+                </div>
+              </li>
               <div
-                href="#"
-                onClick={() => SetSearch(true)}
-                className={` ${search.true ? "IconVisible" : null}`}
-              >
-                <BsSearch className="fa-search" />
-              </div>
+                onClick={() => setValue({ search: false })}
+                className={`modal-back ${
+                  value.search ? "modal-back-show" : null
+                }`}
+              ></div>
             </div>
 
             <div className="navbar-icons">
@@ -218,9 +236,15 @@ const Wrapper = styled.div`
     align-items: center;
     font-size: 22px;
   }
+  .sidebar-icon .FaBars {
+    color: #454545;
+    font-size: 24px;
+    margin: 0px 3px;
+    display: none;
+  }
   #nav .logo {
     margin: 0;
-    padding: 3px 0px;
+    padding: 3px 3px;
     display: flex;
     justify-content: center;
   }
@@ -244,6 +268,7 @@ const Wrapper = styled.div`
     border: none;
     margin-left: 20px;
     padding: 5px 5px;
+    transition: all 0.3s ease;
   }
   .li-rel .link-down {
     margin-left: 0px;
@@ -326,15 +351,41 @@ const Wrapper = styled.div`
     cursor: pointer;
   }
 
+  .search-width {
+    padding: 10px 0px;
+    background-color: #fff;
+    display: none;
+    z-index: 446;
+    border-radius: 4px;
+   
+    transition: all 0.3s ease;
+
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+
+   
+    text-align: right;
+    width: 100%;
+  }
+  .search-width-show {
+    transition: all 0.3s ease;
+    display: block;
+  }
   /*  search btn */
   .search-box {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    transition: all 0.3s ease;
+  }
+  input:focus {
+    outline: 2px solid #cedefd;
   }
   .search-btn {
     color: white;
     float: right;
+    transition: all 0.3s ease;
 
     /* border-radius: 50%; */
 
@@ -349,31 +400,21 @@ const Wrapper = styled.div`
     color: #757070;
     cursor: pointer;
     font-size: 20px;
-    margin: 0 2rem;
+    margin: 1rem 2rem;
   }
 
   .search-input {
-    border: 1px solid #4286f4;
+    border: 0px solid #4286f4;
     background: none;
     outline: none;
-    float: left;
+    float: right;
     padding: 2px;
     color: #757070;
     font-size: 20px;
     transition: 0.4s;
     border-radius: 2px;
-    width: 0px;
-    visibility: hidden;
-  }
-
-  .search-icon:hover .search-input {
-    width: 250px;
-    visibility: visible;
-  }
-  .IconVisible {
-    height: 40px;
-    width: 100px;
-    background-color: #0176e8;
+    transition: all 0.3s ease;
+    width: 200px;
   }
 
   /* Navbar bottom text */
@@ -411,6 +452,13 @@ const Wrapper = styled.div`
   }
 
   @media screen and (max-width: 768px) {
+    width: 100%;
+    .sidebar-icon .FaBars {
+      color: #454545;
+      font-size: 24px;
+      margin: 0px 3px;
+      display: block;
+    }
     .links-ul {
       display: none;
       flex-direction: column;
@@ -421,6 +469,7 @@ const Wrapper = styled.div`
     .navbar-icons div {
       margin: 0px 10px;
     }
+    .search-box,
     .fa-search {
       display: none;
     }

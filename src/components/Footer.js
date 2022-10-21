@@ -52,9 +52,9 @@ const Wrapper = styled.div`
   .footer-infom {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+    justify-content: start;
+    align-items: left;
+    text-align: left;
     margin-left: 0;
     width: 100%;
   }
@@ -78,7 +78,30 @@ const Wrapper = styled.div`
   p {
     font-size: 12px;
     color: #fff;
-    margin-left: 0;
+    flex-wrap: wrap;
+  }
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+
+    .footer {
+      width: 100%;
+      display: flex;
+      /* flex-direction: column; */
+    }
+    ul {
+      display: flex;
+      width: 100%;
+    }
+    li {
+      margin: 0;
+      list-style: none;
+      margin-left: 3px;
+    }
+
+    .footer-logo img {
+      width: 100px;
+    }
   }
 `;
 

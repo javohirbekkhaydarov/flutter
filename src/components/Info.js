@@ -83,9 +83,9 @@ const Info = () => {
             height="228"
             src="https://www.youtube.com/embed/xWV71C2kp38"
             title="How do I make my first Flutter app"
-            frameborder="0"
+            frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
+            allowFullScreen
           ></iframe>
           <iframe
             className="videos-top"
@@ -93,9 +93,9 @@ const Info = () => {
             height="228"
             src="https://www.youtube.com/embed/QlwiL_yLh6E"
             title="What is State?"
-            frameborder="0"
+            frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
+            allowFullScreen
           ></iframe>
           <div className="flutter-video">
             Only have 60 seconds? Learn how to build and deploy a Flutter App!
@@ -105,9 +105,10 @@ const Info = () => {
             height="313"
             src="https://www.youtube.com/embed/ZnufaryH43s"
             title="How to build and deploy an app in Flutter in 60 seconds!"
-            frameborder="0"
+            frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
+            allowFullScreen
+            className="video-flex"
           ></iframe>
         </div>
         <div className="flutter-buttons">
@@ -252,6 +253,16 @@ const Wrapper = styled.div`
   .btn:hover {
     background-color: #085baf;
     cursor: pointer;
+  }
+
+  @media screen and (max-width: 768px) {
+    width: 90%;
+    .video {
+      width: 90%;
+    }
+    .video .video-flex {
+      width: 100%;
+    }
   }
 `;
 
