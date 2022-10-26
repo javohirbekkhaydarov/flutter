@@ -7,11 +7,13 @@ import Footer from "./Footer";
 const Menu = ({ status, setStatus }) => {
   return (
     <MenuStyle>
+      {/* leftsidebar */}
       <div className="menu">
         <div className={`left-side-main ${status ? "left-side-show " : null}`}>
           <LeftSidebar />
         </div>
 
+{/* modal back */}
         <div
           onClick={() => {
             setStatus(false);
@@ -46,6 +48,7 @@ const MenuStyle = styled.div`
       transition: all 0.3s linear;
     }
 
+    /* modal back  */
     .left-slide-back-show {
       display: block !important;
       cursor: pointer;

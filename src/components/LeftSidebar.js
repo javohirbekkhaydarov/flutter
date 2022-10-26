@@ -14,14 +14,18 @@ const LeftSidebar = () => {
 
   return (
     <Wrapper>
+      {/* left section sidebar create */}
       <div className="leftSidebar">
+        {/* added search section */}
         <div className="search-parent">
           <SearchSection />
         </div>
         <hr />
 
+        {/* scrolling information */}
         <div className="rest-info">
           {arr.map((item, id) => (
+            // create FAQ section
             <Accordion className="faq-name " key={id}>
               <AccordionSummary
                 aria-controls="panel1a-content"
@@ -30,6 +34,7 @@ const LeftSidebar = () => {
               >
                 <Typography className="title">{item.name}</Typography>
               </AccordionSummary>
+              {/* loop infom */}
               {item.children.map((element, id) => {
                 return (
                   <AccordionDetails typeof="number" id="typeBorder" key={id}>
@@ -55,6 +60,7 @@ const LeftSidebar = () => {
 const Wrapper = styled.div`
   @import url("https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400&display=swap");
 
+  /* font connection */
   * {
     font-family: "Kumbh Sans", sans-serif;
   }
@@ -63,13 +69,13 @@ const Wrapper = styled.div`
   .leftSidebar {
     position: sticky;
     top: 80px;
-    bottom: 0px;
     display: flex;
     flex-direction: column;
     text-align: left;
     margin: 20px;
     height: 80vh;
     overflow-y: scroll;
+    overflow-x: hidden;
     width: 100%;
     font-family: "Kumbh Sans", sans-serif;
   }
@@ -89,6 +95,7 @@ const Wrapper = styled.div`
     /* margin: 15px; */
   }
 
+  /* remove border and box shadov in accordion */
   .MuiAccordionSummary-content {
     border: none !important;
     box-shadow: none !important;
@@ -106,6 +113,7 @@ const Wrapper = styled.div`
     visibility: hidden;
   }
 
+  /* item styles */
   .item {
     transition: all 0.3s linear;
     color: #1c1c1c;
@@ -117,8 +125,8 @@ const Wrapper = styled.div`
     height: 5px solid red !important;
   }
 
-  .title,
-  item {
+  /* title styles */
+  .title {
     color: #909090;
     cursor: pointer;
     display: flex;
@@ -133,6 +141,7 @@ const Wrapper = styled.div`
     cursor: pointer;
   }
 
+  /* create media querys */
   @media screen and (max-width: 768px) {
     width: 100%;
     display: flex;
@@ -156,6 +165,17 @@ const Wrapper = styled.div`
       width: 100%;
       overflow-y: scroll;
       z-index: 600;
+      position: sticky;
+      top: 80px;
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+      margin: 20px;
+      height: 80vh;
+      overflow-y: scroll;
+      overflow-x: hidden;
+      width: 100%;
+      font-family: "Kumbh Sans", sans-serif;
     }
     .search-parent {
       border-bottom: 0.3px solid #dedede;

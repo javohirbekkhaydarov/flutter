@@ -10,42 +10,55 @@ import styled from "styled-components";
 import "../styles/Main.css";
 
 const Navbar = ({ setStatus, status }) => {
+  // links dropdown
   const [value, setValue] = useState({
     all: false,
     development: false,
     ecosystem: false,
     docs: false,
     search: false,
+
   });
+  // search component
   const [search, SetSearch] = useState(false);
 
   return (
     <Wrapper>
       <div className="navbar">
+        {/* nav parent */}
         <div id="nav">
+          {/* logo */}
           <a href="#" className="logo">
+            {/* sidebar responsive icon */}
             <div className="sidebar-icon">
               <FaBars onClick={() => setStatus(true)} className="FaBars" />
             </div>
+            {/* logo img */}
             <img src="https://docs.flutter.dev/assets/images/shared/brand/flutter/logo/flutter-lockup.png" />
           </a>
 
+{/* nav links */}
           <div className="links">
             <ul className="links-ul">
+              {/* dropdown */}
               <li onClick={() => setValue({ all: true })} className="li-rel">
+                {/* dropdown title */}
                 <span className="links-title">
                   Multi-Platform
                   <span className="links-icon">
+                    {/* dropdown icon */}
                     <AiOutlineCaretDown />
                   </span>
+
                 </span>
+                {/* dropdown content */}
                 <div className={`li-absolute ${value.all ? "li-show" : null}`}>
                   <a href="#">temp data</a>
                   <a href="#">temp data</a>
                   <a href="#">temp data</a>
                 </div>
               </li>
-
+            {/* back to dropdow */}
               <div
                 onClick={() => setValue({ all: false })}
                 className={`modal-back ${value.all ? "modal-back-show" : null}`}
@@ -136,6 +149,7 @@ const Navbar = ({ setStatus, status }) => {
                 }`}
               ></div>
             </ul>
+            {/* navbar search box */}
             <div className="search-box search-icon ">
               <li onClick={() => setValue({ search: true })} className="li-rel">
                 <span className="links-title">
@@ -163,7 +177,7 @@ const Navbar = ({ setStatus, status }) => {
                 }`}
               ></div>
             </div>
-
+                  {/* navbar icons */}
             <div className="navbar-icons">
               <div className="github-icon">
                 <BsGithub />
@@ -174,6 +188,7 @@ const Navbar = ({ setStatus, status }) => {
               <div className="twit-icon">
                 <BsTwitter />
               </div>
+              {/* navbar btn */}
               <button className="btn">get started</button>
             </div>
           </div>

@@ -4,13 +4,17 @@ const Footer = () => {
   return (
     <Wrapper>
       <div className="footer">
+        {/* footer logo */}
         <div className="footer-logo">
+          {/* footer img */}
           <img
             src="https://docs.flutter.dev/assets/images/shared/brand/flutter/logo/flutter-mono-81x100.png"
             alt=""
           />
         </div>
+        {/* footer information */}
         <div className="footer-infom">
+      {/* footer links */}
           <ul>
             <li>
               <a href="#">flutter-dev@</a>{" "}
